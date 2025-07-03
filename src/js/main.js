@@ -1,7 +1,6 @@
 
-import { alerrcorret, alerterror } from "./alerts"
+import { alerrcorret, alerterror, empty } from "./alerts"
 const urlApi = "http://localhost:3000/coders"
-
 const $name = document.getElementById("name")
 const $age = document.getElementById("age")
 const $email = document.getElementById("email")
@@ -11,9 +10,18 @@ const $form = document.getElementById("form")
 
 
 $form.addEventListener("submit", function (event) {  //para capturar al evento de submit
-    event.preventDefault()
-    createCoder()
+    if ($name.value === "" || $age.value === "" || $clan.value == "" || $email.value == "" || $password == "") {
+        empty()
+    } else {
+        event.preventDefault()
+        createCoder()
+        addRowToTable()
+        
+    }
+
 })
+
+
 
 function resetForm() {
     $name.value = ""
@@ -48,4 +56,34 @@ async function createCoder() {
         console.log("aqui esta el error en el sistema")
     }
     resetForm()
+}
+
+function addRowToTable(product) {
+    let nuevaFila = $productTableBody.insertRow();
+
+    let cellId = nuevaFila.insertCell(0);
+    let cellNombre = nuevaFila.insertCell(1);
+    let cellPrecio = nuevaFila.insertCell(2);
+    let cellAccion = nuevaFila.insertCell(3);
+
+    cellId.innerHTML = product.id;
+    cellNombre.innerHTML = product.name;
+    cellPrecio.innerHTML = product.precio;
+
+    let btnEliminar = document.createElement("button");
+    btnEliminar.innerText = "Eliminar";
+    btnEliminar.id = "btn-delete";
+    btnEliminar.onclick = function () {
+        deleteProduct(nuevaFila, product.id);
+    };
+
+    let btnUpdate = document.createElement("button");
+    btnUpdate.innerText = "Editar";
+    btnUpdate.id = "btn-update";
+    btnUpdate.onclick = () => {
+        editProduct(product);
+    };
+
+    cellAccion.appendChild(btnEliminar);
+    cellAccion.appendChild(btnUpdate);
 }

@@ -1,12 +1,12 @@
 {
   "coders": [
     {
-      "name": "string",
-      "age": "string",
-      "email": "string",
-      "password": "string",
-      "clan": "string",
-      "id": "cbd0"
+      "id": "af02",
+      "name": "keyner",
+      "age": "21",
+      "email": "keiner@gmail.com",
+      "password": "1044603308",
+      "clan": "caiman"
     }
   ]
 }

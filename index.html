@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+  <link rel="icon" type="image/svg+xml" href="./public/create.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./src/css/styles.css">
   <title>Registro</title>
@@ -21,16 +21,35 @@
       <input type="number" placeholder="Edad" id="age">
       <input type="email" placeholder="Email" id="email">
       <input type="password" placeholder="Contraseña" id="password">
-      <input type="text" placeholder="Clan" id="clan">
+      <select id="clan">
+        <option value="ciénaga">Cienaga</option>
+        <option value="caiman">Caiman</option>
+        <option value="sierra">Sierra</option>
+        <option value="malecon">Malecon</option>
+      </select>
+      <br>
       <button type="submit">CREAR CODER</button>
     </form>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NOMBRE</th>
+          <th>EDAD</th>
+          <th>EMAIL</th>
+          <th>CLAN</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody id="product-table-body">
+        <!-- agregar filas de los productos nuevos-->
+      </tbody>
+    </table>
   </main>
 
-
-
-  <footer>
-    <h2>Sistema creado por <a href="https://github.com/Keyner23" target="_blank">Keyner Andres Barrios Ochoa</a></h2>
-  </footer>
+  <!-- <footer>
+    <h2>Sistema creado por <a href="https://github.com/Keyner23" target="_blank"> @Keyner Barrios </a></h2>
+  </footer> -->
   <script type="module" src="./src/js/main.js"></script>
 </body>
 

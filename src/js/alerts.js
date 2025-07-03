@@ -14,12 +14,22 @@ const Toast = Swal.mixin({
 export function alerrcorret() {
     Toast.fire({
         icon: "success",
-        title: "creado correctamente"
+        title: "El coder fue creado con exito"
     });
 }
 export function alerterror() {
     Toast.fire({
         icon: "error",
-        title: "hubo un problema en el sistema "
+        title: "Hubo un error en el sistema"
     });
+}
+
+export function empty() {
+    Swal.fire({
+        title: "Error",
+        text: "Favor llenar todos los campos.",
+        icon: "error",
+        timer: 2000
+    });
+    return;
 }

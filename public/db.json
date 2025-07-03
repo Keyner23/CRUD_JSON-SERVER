@@ -1,0 +1,12 @@
+{
+  "coders": [
+    {
+      "name": "string",
+      "age": "string",
+      "email": "string",
+      "password": "string",
+      "clan": "string",
+      "id": "cbd0"
+    }
+  ]
+}

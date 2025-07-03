@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+*{
+    font-family: "Lilita One", sans-serif;
+}
+header{
+    text-align: center;
+    color: #3674B5;
+    font-size: 25px;
+    text-shadow: 0 10px 11px #578FCA;
+}
+body{
+    background-color: #f5f0cd65;
+}
+main{
+    display: flex;
+    justify-content: center;
+    height: 650px;
+    align-items: center;
+
+}
+form{
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    grid-template-rows: 3fr 3fr 3fr ;
+    background-color: #fff2e0b5;
+    height: 350px;
+    width: 700px;
+    border: 8px solid #578FCA;
+    justify-items: center;
+    padding-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 50px #578FCA;
+}
+
+form input{
+    width: 190px;
+    height: 60px;
+    text-align: center;
+    border: 2px solid #578FCA;
+    border-radius: 10px;
+    font-size: 20px;
+}
+form button{
+    height: 60px;
+    width: 180px;
+    border-radius: 5px;
+    font-size: 20px;
+    background: #578FCA;
+}
+form button:hover{
+    box-shadow: 0 10px 50px #578FCA;
+    font-size: 22px;
+}
+footer{
+    height: 159px;
+    background-color: #578FCA;
+    border-radius: 20px;
+}

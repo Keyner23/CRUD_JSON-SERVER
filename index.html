@@ -6,39 +6,31 @@
   <link rel="icon" type="image/svg+xml" href="./public/create.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./src/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <title>Registro</title>
 </head>
 
 <body>
   <header>
-    <h1>REGISTRO DE NUEVO CODER</h1>
+    <h1><i class="bi bi-ui-checks"></i>  INVENTARIO </h1>
   </header>
-
 
   <main>
     <form action="#" id="form">
       <input type="text" placeholder="Nombre" id="name">
-      <input type="number" placeholder="Edad" id="age">
-      <input type="email" placeholder="Email" id="email">
-      <input type="password" placeholder="Contraseña" id="password">
-      <select id="clan">
-        <option value="ciénaga">Cienaga</option>
-        <option value="caiman">Caiman</option>
-        <option value="sierra">Sierra</option>
-        <option value="malecon">Malecon</option>
-      </select>
-      <br>
-      <button type="submit">CREAR CODER</button>
+      <input type="number" placeholder="Cantidad" id="amount">
+      <input type="number" placeholder="Precio" id="preci">
+      <button type="submit">GUARDAR PRODUCTO</button>
+      <button type="button" id="get-product">VER PRODUCTOS</button>
     </form>
     <table>
       <thead>
         <tr>
           <th>ID</th>
           <th>NOMBRE</th>
-          <th>EDAD</th>
-          <th>EMAIL</th>
-          <th>CLAN</th>
-          <th>ACCIONES</th>
+          <th>CANTIDAD</th>
+          <th>PRECIO</th>
+          <th>OPCIONES</th>
         </tr>
       </thead>
       <tbody id="product-table-body">

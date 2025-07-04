@@ -1,12 +1,3 @@
 {
-  "coders": [
-    {
-      "id": "af02",
-      "name": "keyner",
-      "age": "21",
-      "email": "keiner@gmail.com",
-      "password": "1044603308",
-      "clan": "caiman"
-    }
-  ]
+  "coders": []
 }

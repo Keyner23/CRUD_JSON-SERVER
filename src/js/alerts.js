@@ -14,7 +14,7 @@ const Toast = Swal.mixin({
 export function alerrcorret() {
     Toast.fire({
         icon: "success",
-        title: "El coder fue creado con exito"
+        title: "El producto se registro con exito"
     });
 }
 export function alerterror() {
@@ -33,3 +33,4 @@ export function empty() {
     });
     return;
 }
+

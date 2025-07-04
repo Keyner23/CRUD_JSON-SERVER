@@ -24,24 +24,27 @@ main {
     align-items: center;
     gap: 35px;
     width: 1900px;
+    padding-right: 10px;
+    padding-left: 10px;
 
 }
 
 form {
     display: grid;
     grid-template-columns: 4fr 4fr 4fr;
-    grid-template-rows: 3fr 3fr 3fr;
+    grid-template-rows: 3fr 3fr;
     background-color: black;
     height: 370px;
     width: 100%;
     justify-items: center;
     padding-top: 20px;
     box-shadow: 0 10px 80px white;
-    border: 1px solid white;
+    border: 1px solid greenyellow;
     align-items: center;
 }
 
-form input,select {
+form input,
+select {
     width: 370px;
     height: 60px;
     text-align: center;
@@ -59,36 +62,68 @@ form button {
 }
 
 form button:hover {
-    box-shadow: 0 10px 50px white;
+    box-shadow: 0 10px 50px greenyellow;
     font-size: 22px;
     cursor: pointer;
 }
 
-
+#get-product{
+    background-color: rgba(49, 49, 240, 0.932);
+}
+#get-product:hover{
+    box-shadow: 0 10px 50px rgba(49, 49, 240, 0.932);
+}
 
 table {
     color: black;
-    padding: 10PX;
+    padding: 10px;
 }
 
 table th {
-    border: 3px solid black;
+    border: 2px solid greenyellow;
     height: 30px;
     font-size: 23px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
 }
 
 table td {
     text-align: center;
-    border: 3px solid black;
+    border: 3px solid rgba(0, 0, 0, 0.546);
+    height: 50px;
 }
 
 #product-table-body {
-    font-size: 20px;
+    font-size: 22px;
     height: 60px;
 }
+#btn-delete {
+    background-color: rgba(245, 6, 6, 0.752);
+    height: 50px;
+    width: 100px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+#btn-delete:hover{
+    background-color: red;
+}
+
+#btn-update {
+    background-color: rgba(0, 255, 4, 0.671);
+    font-size: 22px;
+    height: 50px;
+    width: 100px;
+    font-size: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#btn-update:hover{
+    background-color: rgb(2, 230, 2);
+}
 /* footer{
     height: 150px;
     border-radius: 20px;

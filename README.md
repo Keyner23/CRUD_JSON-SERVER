@@ -13,7 +13,7 @@ This is an inventory database where each unique product must have its name, pric
 
 
 ## :paperclip: Table of contents :paperclip:
-
+```
 ├── index.html
 ├── LICENSE
 ├── package.json
@@ -25,10 +25,10 @@ This is an inventory database where each unique product must have its name, pric
 └── src
     ├── css
     └── js
-
+```
 
 ## :computer: Technologies :computer:
-Implement HTML, CSS, JS, vite , alertasweetalert2,boostrap,json-server.
+Implement HTML, CSS, JS, vite , alertasweetalert2, boostrap, json-server.
 
 ## :bust_in_silhouette: Author :bust_in_silhouette:
 

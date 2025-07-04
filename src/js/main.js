@@ -1,5 +1,5 @@
 import { alerrcorret, alerterror, empty } from "./alerts"
-import Swal from "sweetalert2"
+// import Swal from "sweetalert2"
 
 const urlApi = "http://localhost:3000/products"
 const $name = document.getElementById("name")

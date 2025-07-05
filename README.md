@@ -12,8 +12,9 @@ This is an inventory database where each unique product must have its name, pric
 - `Functionality 4`: delete product with delete method.
 
 
-## :paperclip: Table of contents :paperclip:
-```
+## :paperclip: Project's structure :paperclip:
+```ruby
+.
 ├── index.html
 ├── LICENSE
 ├── package.json
@@ -25,6 +26,7 @@ This is an inventory database where each unique product must have its name, pric
 └── src
     ├── css
     └── js
+
 ```
 
 ## :computer: Technologies :computer:

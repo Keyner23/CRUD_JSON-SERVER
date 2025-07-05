@@ -1,5 +1,5 @@
 import { alerrcorret, alerterror, empty } from "./alerts"
-// import Swal from "sweetalert2"
+import Swal from "sweetalert2"
 
 const urlApi = "http://localhost:3000/products"
 const $name = document.getElementById("name")
@@ -8,22 +8,36 @@ const $price = document.getElementById("preci")
 const $form = document.getElementById("form")
 const $productTableBody = document.getElementById("product-table-body")
 const $getProduct = document.getElementById("get-product")
+const $btnCalculate = document.getElementById("inventory")
 
-
+// Variables to control editing
 let isEditing = false
 let editingProductId = null
 let editingRow = null
+let currentProducts = [] // This stores the current product list from the server
 
-
+// Event for creating or editing a product
 $form.addEventListener("submit", async function (event) {
     event.preventDefault()
 
+    // Check if any field is empty
     if ($name.value === "" || $amount.value === "" || $price.value === "") {
         empty()
         return
     }
 
+    // Avoid duplicate names (only when creating, not editing)
+    const nameToCheck = $name.value.trim().toLowerCase()
+    if (!isEditing && currentProducts.some(p => p.name.trim().toLowerCase() === nameToCheck)) {
+        Swal.fire({
+            icon: "error",
+            text: "Ya existe un producto con este nombre."
+        })
+        return
+    }
+
     if (isEditing) {
+        // If editing, update the product
         await putProduct(editingProductId)
         updateRowInTable(editingRow, {
             id: editingProductId,
@@ -35,6 +49,7 @@ $form.addEventListener("submit", async function (event) {
         editingProductId = null
         editingRow = null
     } else {
+        // If not editing, create a new product
         await postProduct()
         await getProducts()
     }
@@ -42,19 +57,22 @@ $form.addEventListener("submit", async function (event) {
     resetForm()
 })
 
+// Event for calculating total inventory value
+$btnCalculate.addEventListener("click", calculateInventory)
 
+// Event for manually fetching products
 $getProduct.addEventListener("click", function () {
     getProducts()
 })
 
-
+// Clears the form inputs
 function resetForm() {
     $name.value = ""
     $amount.value = ""
     $price.value = ""
 }
 
-
+// Sends a new product to the server (POST)
 async function postProduct() {
     const newProduct = {
         name: $name.value,
@@ -84,13 +102,14 @@ async function postProduct() {
     resetForm()
 }
 
-
+// Gets the product list from the server and renders it in the table
 async function getProducts() {
     try {
         let response = await fetch(urlApi)
         if (!response.ok) throw new Error("Error al obtener productos")
 
         let data = await response.json()
+        currentProducts = data // Used to prevent duplicates and calculate inventory
         $productTableBody.innerHTML = ""
         data.forEach(product => createRow(product))
     } catch (error) {
@@ -98,7 +117,7 @@ async function getProducts() {
     }
 }
 
-
+// Creates a row in the table with product data and action buttons
 function createRow(product) {
     let nuevaFila = $productTableBody.insertRow()
 
@@ -131,7 +150,7 @@ function createRow(product) {
     cellAccion.appendChild(btnUpdate)
 }
 
-
+// Deletes a product and refreshes the list
 async function deleteProduct(fila, id) {
     Swal.fire({
         title: "¿DESEAS BORRAR?",
@@ -140,22 +159,33 @@ async function deleteProduct(fila, id) {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "¡Sí!"
-    }).then((result) => {
+    }).then(async (result) => {
         if (result.isConfirmed) {
-            fetch(`${urlApi}/${id}`, {
-                method: 'DELETE'
-            })
-            fila.remove()
-            Swal.fire({
-                title: "¡ELIMINADO!",
-                text: "Fue eliminado correctamente.",
-                icon: "success"
-            })
+            try {
+                await fetch(`${urlApi}/${id}`, {
+                    method: 'DELETE'
+                })
+                fila.remove()
+                Swal.fire({
+                    title: "¡ELIMINADO!",
+                    text: "Fue eliminado correctamente.",
+                    icon: "success"
+                })
+
+                await getProducts() // Refresh product list to keep data updated
+
+            } catch (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No se pudo eliminar el producto."
+                })
+            }
         }
     })
 }
 
-
+// Fills the form fields with the product data for editing
 function editProduct(product, row) {
     $name.value = product.name
     $amount.value = product.amount
@@ -166,7 +196,7 @@ function editProduct(product, row) {
     editingRow = row
 }
 
-
+// Sends updated product data to the server (PUT)
 async function putProduct(id) {
     const updatedProduct = {
         name: $name.value,
@@ -194,9 +224,28 @@ async function putProduct(id) {
     }
 }
 
-
+// Updates the table row with the new product values after editing
 function updateRowInTable(row, updatedProduct) {
     row.cells[1].textContent = updatedProduct.name
     row.cells[2].textContent = updatedProduct.amount
     row.cells[3].textContent = updatedProduct.price
+}
+
+// Calculates the total inventory value (amount * price for all products)
+function calculateInventory() {
+    let total = 0
+
+    currentProducts.forEach(product => {
+        const cantidad = parseFloat(product.amount)
+        const precio = parseFloat(product.price)
+        if (!isNaN(cantidad) && !isNaN(precio)) {
+            total += cantidad * precio
+        }
+    })
+
+    Swal.fire({
+        icon: "info",
+        title: "Total del Inventario",
+        text: `El valor total del inventario es: $${total.toLocaleString()}`
+    })
 }

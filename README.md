@@ -1,4 +1,4 @@
-# CODER-REGISTRATION
+# CRUD JSON-SERVER
 This is an inventory database where each unique product must have its name, price, and quantity. This data is stored in JSON-Server using the GET, POST, PUT, and DELETE methods. Vite was used in this project.
 
 ### Project status
